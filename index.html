@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YR FurniTune</title>
+<meta name="description" content="YR FurniTune — the family home layout planner. Opens the app after Google sign-in.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#113866">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FurniTune">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+  :root { --navy: #113866; --navy-2: #0f3260; --paper: #fbf8f0; --paper-2: #f6f1e4; --ink: #1d2733; --muted: #5d6b7c; --rule: #ddd3be; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Thai", sans-serif;
+    color: var(--paper); background-color: var(--navy);
+    background-image:
+      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; align-items: center; justify-content: center;
+    padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  }
+  main { width: 100%; max-width: 440px; }
+  .sheet {
+    background: var(--paper); color: var(--ink); border-radius: 18px; padding: 28px 24px 22px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.35), inset 0 0 0 1px var(--rule);
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand img { width: 64px; height: 64px; border-radius: 15px; flex: none; }
+  h1 { font-size: 1.55rem; line-height: 1.15; margin: 0; letter-spacing: -.01em; }
+  .tag { margin: 2px 0 0; color: var(--muted); font-size: .95rem; }
+  .dim { display: flex; align-items: center; gap: 8px; margin: 20px 0 18px; color: var(--muted); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; }
+  .dim::before, .dim::after { content: ""; flex: 1; height: 0; border-top: 1px solid var(--rule); }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    min-height: 54px; padding: 12px 18px; border-radius: 12px; border: 0; cursor: pointer;
+    font: inherit; font-weight: 650; font-size: 1.05rem; text-decoration: none;
+  }
+  .btn.primary { background: var(--navy); color: var(--paper); box-shadow: 0 6px 16px rgba(17,56,102,.28); }
+  .btn.primary:hover { background: var(--navy-2); }
+  .btn.ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); margin-top: 10px; }
+  .btn:focus-visible { outline: 3px solid #8fd3ff; outline-offset: 2px; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .note { margin: 14px 0 0; font-size: .88rem; color: var(--muted); }
+  .steps { margin: 12px 0 0; padding: 12px 14px; background: var(--paper-2); border-radius: 10px; font-size: .92rem; }
+  .steps ol { margin: 6px 0 0; padding-left: 20px; }
+  .steps li { margin: 3px 0; }
+  .share { display: inline-block; width: 1.05em; height: 1.05em; vertical-align: -.15em; }
+  .status { display: flex; align-items: center; gap: 10px; justify-content: center; padding: 6px 0 2px; font-weight: 600; color: var(--navy); }
+  .spin { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(17,56,102,.2); border-top-color: var(--navy); animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .offline { background: #fff4e5; color: #6b3a07; border-radius: 10px; padding: 10px 12px; margin: 0 0 14px; font-size: .92rem; }
+  footer { margin-top: 14px; text-align: center; color: rgba(251,248,240,.62); font-size: .78rem; }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) { .spin { animation-duration: 2.4s; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="sheet">
+    <div class="brand">
+      <img src="icons/icon-192.png" alt="" width="64" height="64">
+      <div>
+        <h1>YR FurniTune</h1>
+        <p class="tag">Family home layout planner</p>
+      </div>
+    </div>
+
+    <div class="dim">open</div>
+
+    <div id="offline" class="offline" hidden>No internet right now. FurniTune needs internet to open. It opens again as soon as you are back online.</div>
+
+    <div id="opening" class="status" hidden><span class="spin" aria-hidden="true"></span><span>Opening your app…</span></div>
+
+    <a id="open" class="btn primary" href="https://script.google.com/macros/s/AKfycbzohqIEhzmFcobVSvDrgWh06vqtiUKFZ7Xe1hT9wa-i0hSUQArZc-UyZP3bYMQL9ZmPUA/exec" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      Open YR FurniTune
+    </a>
+    <p class="note">Sign in with your Google account. Only family members on the app's list can open it.</p>
+
+    <section id="install" hidden>
+      <div class="dim">app icon</div>
+      <button id="installBtn" class="btn ghost" type="button" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+        Install app icon
+      </button>
+      <div id="iosSteps" class="steps" hidden>
+        <strong>Add the icon to your iPhone / iPad</strong>
+        <ol>
+          <li>Open this page in <b>Safari</b>.</li>
+          <li>Tap <b>Share</b> <svg class="share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Share"><path d="M12 3v13"/><path d="M8 7l4-4 4 4"/><path d="M5 11v9h14v-9"/></svg> at the bottom.</li>
+          <li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+        </ol>
+      </div>
+      <div id="otherSteps" class="steps" hidden>
+        <strong>Add the icon</strong>
+        <ol>
+          <li>Open this page in <b>Chrome</b> or <b>Edge</b>.</li>
+          <li>Menu <b>⋮</b> → <b>Install app</b> (or <b>Add to Home screen</b>).</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+  <footer>YR FurniTune · <span id="ver">v2026.11.13-0648</span></footer>
+</main>
+<script>
+(function () {
+  var APP = document.getElementById('open').getAttribute('href');
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var $ = function (id) { return document.getElementById(id); };
+
+  function online() { return navigator.onLine !== false; }
+  function showOffline() { $('offline').hidden = online(); }
+  window.addEventListener('online', function () { showOffline(); if (standalone) autoOpen(); });
+  window.addEventListener('offline', showOffline);
+  showOffline();
+
+  // Installed icon: go straight into the app (once per launch, so "back" doesn't loop).
+  function autoOpen() {
+    if (!online()) return;
+    try { if (sessionStorage.getItem('ft-opened')) return; sessionStorage.setItem('ft-opened', '1'); } catch (e) {}
+    $('opening').hidden = false;
+    setTimeout(function () { window.location.href = APP; }, 350);
+  }
+  if (standalone) {
+    autoOpen();
+    // coming back from the app (back button / app switch): show the Open button again
+    window.addEventListener('pageshow', function () { $('opening').hidden = true; });
+  } else {
+    $('install').hidden = false;
+    if (ios) $('iosSteps').hidden = false;
+    var deferred = null;
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault(); deferred = e;
+      $('installBtn').hidden = false; $('otherSteps').hidden = true;
+    });
+    // manual steps first; replaced by the one-tap Install button when the browser offers it
+    if (!ios) $('otherSteps').hidden = false;
+    $('installBtn').addEventListener('click', function () {
+      if (!deferred) return;
+      deferred.prompt();
+      deferred.userChoice.then(function () { deferred = null; $('installBtn').hidden = true; });
+    });
+    window.addEventListener('appinstalled', function () { $('install').hidden = true; });
+  }
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
