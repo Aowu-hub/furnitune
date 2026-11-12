@@ -1,14 +1,14 @@
 {
- "version": "v2026.11.13-0648",
+ "version": "v2026.11.13-0655",
  "files": {
   "icons/apple-touch-icon.png": "e08dc42a71b5592afaa871b69edd07d84d2c154af4b3e690b62ade6e63cda376",
   "icons/favicon-32.png": "0ca1f03c6648e26b28d10eb37cb3650e3c38935c7424fe9acec25d2effbda191",
   "icons/icon-192.png": "d6eb98ec9b278ee7903897569c44a1558c4151319181bda002bf2a423b9c2cb1",
   "icons/icon-512.png": "368c9d12840ebd95ab2286847d8e694d4b2426be89ed592a6d44e68377f7438e",
   "icons/maskable-512.png": "3f6b3c42e5b78b00aa6d85fb4eda75312a838879fb9bd98ffb600131b011cec6",
-  "index.html": "27d6c0d986209eaf43ec83416782f1c51d73e01fa7cd58c305582128f9608f1a",
-  "manifest.webmanifest": "d0045b0fc21f9128f3860fa11889f53574802be8591771e3aff1cd4ebbcdb2b1",
-  "sw.js": "deb7f4cd2add7082c4fd49630497064efc81e096091f55dd337729d25044fffe"
+  "index.html": "b103e8c35ea4408dfc66539bc14c40553b20251a19bed891fa6465c9b12d2c02",
+  "manifest.webmanifest": "c6b1c0b8be0c834f222338371234b79b5e03a5fab99f0b53329042fbbad8c074",
+  "sw.js": "12e3356ea748c559c9795ec0f8d65f841726362de158f88109ef2c03b36c98d9"
  },
  "neutral": {
   "icons/apple-touch-icon.png": "e08dc42a71b5592afaa871b69edd07d84d2c154af4b3e690b62ade6e63cda376",
@@ -17,7 +17,7 @@
   "icons/icon-512.png": "368c9d12840ebd95ab2286847d8e694d4b2426be89ed592a6d44e68377f7438e",
   "icons/maskable-512.png": "3f6b3c42e5b78b00aa6d85fb4eda75312a838879fb9bd98ffb600131b011cec6",
   "index.html": "aff93c7ed2aa8610cae48a45c56b11bcd0d9a8121b6c1514a6496e36f57d26aa",
-  "manifest.webmanifest": "d0045b0fc21f9128f3860fa11889f53574802be8591771e3aff1cd4ebbcdb2b1",
+  "manifest.webmanifest": "c6b1c0b8be0c834f222338371234b79b5e03a5fab99f0b53329042fbbad8c074",
   "sw.js": "231d1f182ce5c7f3b6f0e8b0d653d991280bb5f46ed66638cf05213407450361"
  }
 }

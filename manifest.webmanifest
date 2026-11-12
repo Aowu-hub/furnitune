@@ -2,7 +2,7 @@
   "name": "YR FurniTune",
   "short_name": "FurniTune",
   "description": "Family home layout planner",
-  "id": "./",
+  "id": "/furnitune/",
   "start_url": "./?source=icon",
   "scope": "./",
   "display": "standalone",
