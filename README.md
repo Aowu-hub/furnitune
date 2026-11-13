@@ -1,5 +1,5 @@
 # YR FurniTune
 
-Installable launcher for the YR FurniTune family home layout planner (Google Apps Script app; Google sign-in, family members only).
+The YR FurniTune family home layout planner (installable launcher for the Google Apps Script app). Google sign-in, family members only.
 
 Built and published automatically from a private repo. Do not edit here: changes are overwritten.

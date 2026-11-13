@@ -1,6 +1,6 @@
 // YR FurniTune launcher — keeps the launcher page on the device so the icon opens even offline
 // (it then says "No internet"). The app itself always runs online on Google.
-var CACHE = 'furnitune-v2026.11.13-0655';
+var CACHE = 'furnitune-v2026.11.13-0901';
 var FILES = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'];
 
 self.addEventListener('install', function (e) {
