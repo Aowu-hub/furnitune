@@ -1,16 +1,18 @@
 {
- "version": "v2026.11.13-0901",
- "mode": "launcher",
+ "version": "v2026.11.13-0910",
+ "mode": "app",
  "files": {
   "icons/apple-touch-icon.png": "e08dc42a71b5592afaa871b69edd07d84d2c154af4b3e690b62ade6e63cda376",
   "icons/favicon-32.png": "0ca1f03c6648e26b28d10eb37cb3650e3c38935c7424fe9acec25d2effbda191",
   "icons/icon-192.png": "d6eb98ec9b278ee7903897569c44a1558c4151319181bda002bf2a423b9c2cb1",
   "icons/icon-512.png": "368c9d12840ebd95ab2286847d8e694d4b2426be89ed592a6d44e68377f7438e",
   "icons/maskable-512.png": "3f6b3c42e5b78b00aa6d85fb4eda75312a838879fb9bd98ffb600131b011cec6",
-  "index.html": "e83dc5d820cc379db40b1dc2c5a50cca21dfde38b21e44f3711079a669409e39",
+  "index.html": "8e27084bab520d498fd79357104c37aa9c0ffc71203feb4986cb8a0ee804bd66",
   "manifest.webmanifest": "c6b1c0b8be0c834f222338371234b79b5e03a5fab99f0b53329042fbbad8c074",
   "privacy.html": "d167755025c6840d9a33fe61d9b686be491d47eb9b9c11ee37c40ff109f4064b",
-  "sw.js": "289c5aad00abdc7598f3d23f9d1d8397e010ebc479f57f2a6c7ffabe29423314"
+  "sw.js": "a9bfcad1067ea12cdcbd1c8fe5a66d718045c54508560bf1991cda5bfa00a13d",
+  "vendor/konva.min.js": "7fb114bc4ce6626366cc1e2ca091275079ac70ab6ce652105e5a42a5923e1b95",
+  "web.js": "ba058076160906500ebdc7cecd9cf99f811cac2df722b6e62d7361e771ad0ab7"
  },
  "neutral": {
   "icons/apple-touch-icon.png": "e08dc42a71b5592afaa871b69edd07d84d2c154af4b3e690b62ade6e63cda376",
@@ -20,7 +22,9 @@
   "icons/maskable-512.png": "3f6b3c42e5b78b00aa6d85fb4eda75312a838879fb9bd98ffb600131b011cec6",
   "manifest.webmanifest": "c6b1c0b8be0c834f222338371234b79b5e03a5fab99f0b53329042fbbad8c074",
   "privacy.html": "d167755025c6840d9a33fe61d9b686be491d47eb9b9c11ee37c40ff109f4064b",
-  "index.html": "aff93c7ed2aa8610cae48a45c56b11bcd0d9a8121b6c1514a6496e36f57d26aa",
-  "sw.js": "231d1f182ce5c7f3b6f0e8b0d653d991280bb5f46ed66638cf05213407450361"
+  "index.html": "2320e46f512c2b1796d97016dd953f30027e1bf1c27bed2ebca662535dca49f2",
+  "web.js": "ba058076160906500ebdc7cecd9cf99f811cac2df722b6e62d7361e771ad0ab7",
+  "vendor/konva.min.js": "7fb114bc4ce6626366cc1e2ca091275079ac70ab6ce652105e5a42a5923e1b95",
+  "sw.js": "a5fe2e160b0a3ab402e0cde78947df57618d68b6a745ff2eb7e5c016e94ba2f4"
  }
 }
